@@ -3,6 +3,6 @@ resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/releas
 resolvers += "Typesafe Snapshots" at "https://repo.typesafe.com/typesafe/snapshots/"
 
 // The Play plugin
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.4.0-M2")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.4.0-M3")
 
 // web plugins
