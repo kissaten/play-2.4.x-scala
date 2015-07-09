@@ -1,0 +1,31 @@
+web:
+  build: .
+  command: 'target/universal/stage/bin/play-2-4-x-scala -Dhttp.port=8080'
+  environment:
+    PORT: 8080
+    DATABASE_URL: 'postgres://postgres:@herokuPostgresql:5432/postgres'
+  ports:
+    - '8080:8080'
+  links:
+    - herokuPostgresql
+console:
+  build: .
+  command: 'target/universal/stage/bin/play-2-4-x-scala -main scala.tools.nsc.MainGenericRunner -usejavacp'
+  environment:
+    DATABASE_URL: 'postgres://postgres:@herokuPostgresql:5432/postgres'
+  links:
+    - herokuPostgresql
+shell:
+  build: .
+  command: bash
+  environment:
+    PORT: 8080
+    DATABASE_URL: 'postgres://postgres:@herokuPostgresql:5432/postgres'
+  ports:
+    - '8080:8080'
+  links:
+    - herokuPostgresql
+  volumes:
+    - '.:/app/user'
+herokuPostgresql:
+  image: postgres
